@@ -1,8 +1,10 @@
+//https://teachablemachine.withgoogle.com/models/FLE5jjzqh/// //&#128076; = OK// //&#128077; = SIM// //&#128078; = NÃO//
+
 Webcam.set({
     width:350,
     heigth:300,
     imageFormat : 'png' ,
-    pngQuality:180
+    pngQuality:1090
 });
 
 camera = document.getElementById("camera");
@@ -19,7 +21,7 @@ function takeSnapshot()
 
 console.log('ml5 version:', ml5,version);
 
-classifier =ml5.imageClassifier('https://teachablemachine.withgoogle.com/models/JkZlCYdQS/model.json',modelLoaded);
+classifier =ml5.imageClassifier('https://teachablemachine.withgoogle.com/models/FLE5jjzqh/model.json',modelLoaded);
 
 function modelLoaded() {
     console.log("Model Loaded");
@@ -49,38 +51,38 @@ function gotResult(error, results) {
 prediction1 = result[0].label;
 prediction2 = result[1].label;
 speak();
-if (results[0].label == "feliz")
+if (results[0].label == "Ok")
 {
-    document.getElementById("updateEmoji").innerHTML = "&#128522;";
+    document.getElementById("updateEmoji").innerHTML = "&#128076;";
 }
 
 
-if (results[0].label == "triste")
+if (results[0].label == "Não")
 {
-    document.getElementById("updateEmoji").innerHTML = "&#128532;";
+    document.getElementById("updateEmoji").innerHTML = "&#128078;";
 }
 
-if (results[0].label == "bravo")
+if (results[0].label == "Sim")
 {
-    document.getElementById("updateEmoji").innerHTML = "&#128548;";
-}
-
-
-
-if (results[1].label == "feliz")
-{
-    document.getElementById("updateEmoji2").innerHTML = "&#128522;";
+    document.getElementById("updateEmoji").innerHTML = "&#128077";
 }
 
 
-if (results[1].label == "triste")
+
+if (results[0].label == "Ok")
 {
-    document.getElementById("updateEmoji2").innerHTML = "&#128532;";
+    document.getElementById("updateEmoji2").innerHTML = "&#128076;";
 }
 
-if (results[1].label == "bravo")
+
+if (results[0].label == "Não")
 {
-    document.getElementById("updateEmoji2").innerHTML = "&#128548;";
+    document.getElementById("updateEmoji2").innerHTML = "&#128078;";
+}
+
+if (results[0].label == "Sim")
+{
+    document.getElementById("updateEmoji2").innerHTML = "&#128077";
 }
 
 }}
